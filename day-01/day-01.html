@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            /* 垂直水平居中 */
+            width: 1200px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            /* background-color: aqua; */
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        .item{
+            width: 100px;
+            height: 100px;
+            background-color: #999999;
+            border-radius: 10px;
+            border: 3px solid #000000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        .click{
+            background-color: #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">
+            <div>A</div>
+            <div>CLAP</div>
+        </div>
+        <div class="item">
+            <div>S</div>
+            <div>HIHAT</div>
+        </div>
+        <div class="item">
+            <div>D</div>
+            <div>KICK</div>
+        </div>
+        <div class="item">
+            <div>F</div>
+            <div>OPENHAT</div>
+        </div>
+        <div class="item">
+            <div>G</div>
+            <div>BOOM</div>
+        </div>
+        <div class="item">
+            <div>H</div>
+            <div>RIDE</div>
+        </div>
+        <div class="item">
+            <div>J</div>
+            <div>SNARE</div>
+        </div>
+        <div class="item">
+            <div>K</div>
+            <div>TOM</div>
+        </div>
+        <div class="item">
+            <div>L</div>
+            <div>TINK</div>
+        </div>
+    </div>
+    <audio src="./mp3/clap.wav"></audio>
+    <audio src="./mp3/hihat.wav"></audio>
+    <audio src="./mp3/kick.wav"></audio>
+    <audio src="./mp3/openhat.wav"></audio>
+    <audio src="./mp3/boom.wav"></audio>
+    <audio src="./mp3/ride.wav"></audio>
+    <audio src="./mp3/snare.wav"></audio>
+    <audio src="./mp3/tom.wav"></audio>
+    <audio src="./mp3/tink.wav"></audio>
+</body>
+<script>
+    var item = document.querySelectorAll('.item');
+    for (let i = 0; i < item.length; i++) {
+        item[i].addEventListener('click',function(e){
+            // 添加class属性
+            item[i].classList.add('click');
+            var audio = document.querySelectorAll('audio')[i];
+            audio.currentTime = 0;
+            audio.play();
+            console.log(item[i].classList);
+            setTimeout(function(){
+                item[i].classList.remove('click');
+            },100);
+            // item[i].classList.remove('click');
+        })
+    }
+</script>
+</html>
