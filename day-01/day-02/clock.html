@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            position: relative;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            width: 25rem;
+            height: 25rem;
+            background-color: aqua;
+            border-radius: 50%;
+        }
+        #hour{
+            position: absolute;
+            width: 6.25rem;
+            height: .375rem;
+            background-color: pink;
+            left: 12.5rem;
+            top: 12.5rem;
+            /* 旋转点 */
+            transform-origin:0 0;
+        }
+        #miniute{
+            position: absolute;
+            width: 8.75rem;
+            height: .375rem;
+            background-color: red;
+            left: 12.5rem;
+            top: 12.5rem;
+            /* 旋转点 */
+            transform-origin:0 0;
+        }
+        #second{
+            position: absolute;
+            width: 11.25rem;
+            height: .375rem;
+            background-color: black;
+            left: 12.5rem;
+            top: 12.5rem;
+            /* 旋转点 */
+            transform-origin:0 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="hour"></div>
+        <div id="miniute"></div>
+        <div id="second"></div>
+    </div>
+</body>
+<script>
+    var hour = document.getElementById('hour');
+    var miniute = document.getElementById('miniute');
+    var second = document.getElementById('second');
+    var timer = setInterval(
+        function(){
+            let date = new Date();
+            let hourT = date.getHours();
+            if(hourT > 12){
+                hourT = hourT - 12;
+            }
+            let miniuteT = date.getMinutes();
+            let secondT = date.getSeconds();
+            let hourDegree = hourT * 30 + miniuteT / 2;
+            let miniuteDegree = miniuteT * 6 + secondT / 10;
+            let secondDegree = secondT * 6;
+            // console.log(hourDegree,miniuteT,secondT);
+            hour.style.transform = `rotate(${hourDegree-90}deg)`;
+            miniute.style.transform = `rotate(${miniuteDegree-90}deg)`;
+            second.style.transform = `rotate(${secondDegree-90}deg)`;
+        }
+    , 1000)
+</script>
+</html>
