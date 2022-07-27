@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root{
+            background-color: aqua;
+        }
+        .main{
+            position: relative;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            width: 25rem;
+            height: 25rem;
+            background-color: aqua;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .control{
+            width: 600px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .img{
+            padding: var(--spacing);
+            background-color: var(--base);
+            filter: blur(var(--blur));
+        }
+        img{
+            width: 177px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="title">Update CSS Variables with JS</div>
+        <div class="control">
+            <label for="spacing">Spacing:</label>
+            <input type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+            <label for="blur">Blur:</label>
+            <input type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+            <label for="base">Base Color</label>
+            <input type="color" name="base" value="#ffc600">
+        </div>
+        <div class="img">
+            <img src="../../src/day-03/1.jpg" alt="">
+        </div>
+    </div>
+</body>
+<script>
+    let inputs = document.querySelectorAll('.control input');
+    inputs.forEach(input => {
+        input.addEventListener('change', e => {
+            console.log(e)
+            let value = e.target.value;
+            let sizing = e.target.dataset.sizing || '';
+            document.documentElement.style.setProperty(`--${e.target.name}`,value+sizing); 
+        })
+    })
+</script>
+</html>
