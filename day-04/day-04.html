@@ -46,9 +46,21 @@
     const allYear = inventors.reduce((total,item) =>{
         return total + (item.passed - item.year)
     },0)
+    // 按照寿命长度排序
+    const oldest = inventors.sort((a,b)=>{
+        let aLive = a.passed - a.year;
+        let bLive = b.passed - b.year;
+        return aLive > bLive ? 1 : -1;
+    })
+    console.table("15世纪出生的")
     console.table(born15s)
+    console.table("全名")
     console.table(fullName)
+    console.table("年龄排序")
     console.table(yearSort)
+    console.table("总寿命")
     console.table(allYear)
+    console.table("寿命排序")
+    console.table(oldest)
 </script>
 </html>
