@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .main{
+            display: flex;
+            flex-direction: row;
+        }
+        .main > *{
+            min-height: 100vh;
+            flex: 1;
+            background-position: center;
+            background-size: cover;
+        }
+        .one{
+            background: url("./src/1.jpg");
+        }
+        .two{
+            background: url("./src/2.jpg");
+        }
+        .three{
+            background: url("./src/3.jpg");
+        }
+        .four{
+            background: url("./src/4.jpg");
+        }
+        .five{
+            background: url("./src/5.jpg");
+        }
+    </style>
+</head>
+<body>
+<!--test-->
+    <div class="main">
+        <div class="one">
+        </div>
+        <div class="two">
+        </div>
+        <div class="three">
+        </div>
+        <div class="four">
+        </div>
+        <div class="five">
+        </div>
+    </div>
+</body>
+</html>
